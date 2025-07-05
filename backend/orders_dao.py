@@ -13,11 +13,11 @@ def insert_new_order(connection, order):
 
     return cursor.lastrowid
 
-def get_orders_details(connection):
+def get_order_details(connection, o_id):
     cursor = connection.cursor()
-    query = ("SELECT ID, Date, Customer_Name FROM Orders")
+    query = ("SELECT ID, Date, Customer_Name FROM Orders WHERE ID=%s")
 
-    cursor.execute(query)
+    cursor.execute(query, o_id)
 
     response = []
     for ID, Date, Customer_Name in cursor:
@@ -29,7 +29,7 @@ def get_orders_details(connection):
     
     return response
 
-def delete_orders_details(connection, order_id):
+def delete_order_details(connection, order_id):
     cursor = connection.cursor()
     query = ("DELETE FROM Orders WHERE ID=" + order_id)
 

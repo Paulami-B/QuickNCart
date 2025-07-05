@@ -19,6 +19,7 @@ def get_orders(connection):
     query = ("SELECT "
             "O.ID AS O_ID, "
             "O.Name AS O_Name, "
+            "O.Date AS O_Date"
             "SUM(P.Price_Per_Unit * OI.Quantity) AS Total"
             "FROM Order_Items OI "
             "JOIN Orders O ON OI.O_ID = O.ID "
@@ -29,17 +30,18 @@ def get_orders(connection):
 
     response = []
 
-    for O_ID, O_Name, Total in cursor:
+    for O_ID, O_Name, O_Date, Total in cursor:
         response.append({
             'o_id': O_ID,
             'o_name': O_Name,
+            'o_date': O_Date,
             'total': Total
         })
     
     return response
 
 
-def get_orders_details(connection, o_id):
+def get_order_details(connection, o_id):
     cursor = connection.cursor()
 
     query = ("SELECT "
