@@ -19,7 +19,7 @@ const getOrders = async() => {
             tr.classList.add("order-row");
 
             tr.addEventListener("click", () => {
-                location.href = `order-details.html?order_id=${order.o_id}`;
+                location.href = `order-details.html?order_id=${order.o_id}&buyer=${order.o_name}`;
             });
 
             tr.innerHTML = `

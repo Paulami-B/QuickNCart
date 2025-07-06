@@ -66,18 +66,13 @@ def get_all_orders():
 
 @app.route('/getOrder', methods=['GET'])
 def get_order():
-    oreder_id = request.args.get('order_id')
+    o_id = request.args.get('order_id')
 
     if not o_id:
         return jsonify({'error': 'Missing Order ID'}), 400
 
-    response_1 = order_items_dao.get_order_details(connection, order_id)
-    response_2 = orders_dao.get_order_details(connection, order_id)
-    response = jsonify({
-        'c_name': response_2['c_name'],
-        'date': response_2['date'],
-        'orders': response_1
-    })
+    response = order_items_dao.get_order_details(connection, o_id)
+    response = jsonify(response)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 

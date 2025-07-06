@@ -1,17 +1,5 @@
 from sql_connection import get_sql_connection
 
-# def add_order_item(connection, order):
-#     cursor = connection.cursor()
-#     query = ("INSERT INTO Order_Items "
-#             "(O_ID, P_ID, Quantity) "
-#             "VALUES ("
-#             "%s, "
-#             "(SELECT ID FROM Products WHERE Name = %s LIMIT 1)"
-#             "%s)")
-#     data = (order['o_id'], order['p_name'], order['quantity'])
-
-#     cursor.execute(query, data)
-
 def add_order_item(connection, order):
     try:
         cursor = connection.cursor()
@@ -75,28 +63,28 @@ def get_order_details(connection, o_id):
     cursor = connection.cursor()
 
     query = ("SELECT "
-            "P.Name AS P_Name "
-            "P.Unit AS Unit "
-            "OI.Quantity AS Qty "
+            "P.ID AS P_ID, "
+            "P.Name AS P_Name, "
+            "P.Unit AS Unit, "
+            "OI.Quantity AS Qty, "
             "(P.Price_Per_Unit * OI.Quantity) AS Amount "
             "FROM Order_Items OI "
             "JOIN Products P ON OI.P_ID = P.ID "
             "WHERE OI.O_ID = %s")
     
-    cursor.execute(query, o_id)
+    cursor.execute(query, (o_id,))
 
     response = []
-    total = 0
-    for P_Name, Unit, Qty, Amount in cursor:
+    for P_ID, P_Name, Unit, Qty, Amount in cursor:
         response.append({
+            'p_id': P_ID,
             'p_name': P_Name,
             'unit': Unit,
             'qty': Qty,
             'amount': Amount
         })
-        total = total+Amount
     
-    return response, total
+    return response
 
 
 if __name__ == '__main__':

@@ -232,3 +232,18 @@ input {
   font-size: 30px;
   margin-bottom: 20px;
 }
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100%;
+  background: transparent;
+  position: relative;
+}
+
+.error-inner {
+  padding: 20px;
+  font-size: 48px;
+  font-weight: bold;
+}
