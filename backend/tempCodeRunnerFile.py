@@ -1,0 +1,1 @@
+return_id = orders_dao.delete_order_details(connection, request.form['order_id'])

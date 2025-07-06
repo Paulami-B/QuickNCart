@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from sql_connection import get_sql_connection
 import mysql.connector
 import json
@@ -8,6 +9,7 @@ import orders_dao
 import order_items_dao
 
 app = Flask(__name__)
+CORS(app)
 connection = get_sql_connection()
 
 @app.route('/getProducts', methods=['GET'])
@@ -52,7 +54,7 @@ def insert_order():
 
 @app.route('/getAllOrders', methods=['GET'])
 def get_all_orders():
-    response = orders_dao.get_orders(connection)
+    response = order_items_dao.get_orders(connection)
     response = jsonify(response)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
@@ -78,7 +80,8 @@ def get_order():
 
 @app.route('/deleteOrder', methods=['POST'])
 def delete_order():
-    return_id = orders_dao.delete_order_details(connection, request.form['order_id'])
+    data = request.get_json()
+    return_id = orders_dao.delete_order_details(connection, data['order_id'])
     response = jsonify({
         'order_id': return_id
     })

@@ -31,9 +31,9 @@ def get_order_details(connection, o_id):
 
 def delete_order_details(connection, order_id):
     cursor = connection.cursor()
-    query = ("DELETE FROM Orders WHERE ID=" + order_id)
+    query = ("DELETE FROM Orders WHERE ID=%s")
 
-    cursor.execute(query)
-    cursor.commit()
+    cursor.execute(query, (order_id,))
+    connection.commit()
 
     return cursor.lastrowid

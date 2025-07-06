@@ -24,32 +24,21 @@
           <th>Amount</th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="order-row" onclick="location.href=`order-details.html?order_id=${1}`;">
-            <td>1</td>
-            <td>Wed, 25 Jun 2025, 11:33:22 GMT</td>
-            <td>Customer 1</td>
-            <td class="last-col">
-                <p>₹ 100.00</p>
-                <button class="delete">
-                  <i class="fa fa-minus-circle"></i>
-                </button>
-            </td>
-        </tr>
-        <tr class="order-row" onclick="location.href=`order-details.html?order_id=${2}`;">
-            <td>2</td>
-            <td>Wed, 25 Jun 2025, 11:42:05 GMT</td>
-            <td>Customer 2</td>
-            <td class="last-col">
-                <p>₹ 750.00</p>
-                <button class="delete">
-                  <i class="fa fa-minus-circle"></i>
-                </button>
-            </td>
-        </tr>
+      <tbody id="orders-body">
       </tbody>
     </table>
     </div>
   </div>
+  <div id="deleteModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <p class="modal-header"></p>
+      <p>This cannot be undone.Are you sure?</p>
+      <div class="modal-btn-div">
+        <button class="modal-btn" id="confirmDelete">Yes, Delete</button>
+        <button class="modal-btn" id="cancelDelete">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <script src="./js/index.js"></script>
 </body>
 </html>

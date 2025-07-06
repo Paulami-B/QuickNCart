@@ -18,9 +18,9 @@ def get_orders(connection):
 
     query = ("SELECT "
             "O.ID AS O_ID, "
-            "O.Name AS O_Name, "
-            "O.Date AS O_Date"
-            "SUM(P.Price_Per_Unit * OI.Quantity) AS Total"
+            "O.Customer_Name AS O_Name, "
+            "O.Date AS O_Date, "
+            "SUM(P.Price_Per_Unit * OI.Quantity) AS Total "
             "FROM Order_Items OI "
             "JOIN Orders O ON OI.O_ID = O.ID "
             "JOIN Products P ON OI.P_ID = P.ID "
@@ -67,3 +67,9 @@ def get_order_details(connection, o_id):
         total = total+Amount
     
     return response, total
+
+
+if __name__ == '__main__':
+    connection = get_sql_connection()
+    # print(get_all_products(connection))
+    print(get_orders(connection))
