@@ -43,8 +43,12 @@ def delete_product():
 
 @app.route('/insertOrder', methods=['POST'])
 def insert_order():
-    request_payload = json.loads(request.form['data'])
-    order_id = orders_dao.insert_new_order(connection, request_payload)
+    request_payload = request.get_json()
+
+    if not request_payload:
+        return jsonify({'error': 'Invalid or missing JSON'}), 400
+    # order_id = orders_dao.insert_new_order(connection, request_payload)
+    order_id = order_items_dao.add_order_item(connection, request_payload)
     response = jsonify({
         'order_id': order_id
     })

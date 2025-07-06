@@ -1,16 +1,46 @@
 from sql_connection import get_sql_connection
 
-def add_order_item(connection, order):
-    cursor = connection.cursor()
-    query = ("INSERT INTO Order_Items "
-            "(O_ID, P_ID, Quantity) "
-            "VALUES ("
-            "%s, "
-            "(SELECT ID FROM Products WHERE Name = %s LIMIT 1)"
-            "%s)")
-    data = (order['o_id'], order['p_name'], order['quantity'])
+# def add_order_item(connection, order):
+#     cursor = connection.cursor()
+#     query = ("INSERT INTO Order_Items "
+#             "(O_ID, P_ID, Quantity) "
+#             "VALUES ("
+#             "%s, "
+#             "(SELECT ID FROM Products WHERE Name = %s LIMIT 1)"
+#             "%s)")
+#     data = (order['o_id'], order['p_name'], order['quantity'])
 
-    cursor.execute(query, data)
+#     cursor.execute(query, data)
+
+def add_order_item(connection, order):
+    try:
+        cursor = connection.cursor()
+        query_1 = ("INSERT INTO Orders "
+                "(Date, Customer_Name) "
+                "VALUES (%s, %s)")
+        
+        data_1 = (order['date'], order['c_name'])
+        query_2 = ("INSERT INTO Order_Items "
+                "(O_ID, P_ID, Quantity) "
+                "VALUES ("
+                "%s, "
+                "(SELECT ID FROM Products WHERE Name = %s LIMIT 1), "
+                "%s)")
+
+        cursor.execute(query_1, data_1)
+        order_id = cursor.lastrowid
+        for item in order['items']:
+            data_2 = (order_id, item['p_name'], item['qty'])
+            cursor.execute(query_2, data_2)
+
+        connection.commit()
+        return order_id
+    except Exception as e:
+        connection.rollback()
+        print("Transaction failed:", e)
+
+    finally:
+        cursor.close()
 
 
 def get_orders(connection):

@@ -1,7 +1,6 @@
 const apiUrl = 'http://127.0.0.1:5000/';
 
 const getOrders = async() => {
-    console.log("Started");
     try {
         const response = await fetch(`${apiUrl}/getAllOrders`, {
             method: 'GET',
@@ -59,7 +58,10 @@ function showDeleteModal(o_id) {
 
 
 function hideDeleteModal() {
-  document.getElementById("deleteModal").style.display = "none";
+  const modal = document.getElementById("deleteModal");
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 1000);
 }
 
 
@@ -74,7 +76,13 @@ async function deleteOrder(orderId) {
     });
 
     if (res.ok) {
-      alert("Order deleted!");
+      const modalDiv = document.querySelector('.modal-content');
+      modalDiv.innerHTML = "";
+      const p = document.createElement('p');
+      p.classList.add('modal-header');
+      p.innerHTML = `Order #${orderId} deleted successfully`;
+      modalDiv.appendChild(p);
+      hideDeleteModal();
       getOrders();
     } else {
       alert("Delete failed.");

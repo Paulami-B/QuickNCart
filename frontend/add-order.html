@@ -11,8 +11,13 @@
 <body>
     <div class="blurred-box">
     <div class="header-title">
-        <h1>Products: </h1>
-        <a href="index.html">Place Order</a>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <a href="index.html" class="back">
+                <i class="fa fa-long-arrow-left fa-lg"></i>
+            </a>
+            <h1>Products: </h1>
+        </div>
+        <button id="order-btn" onclick="showNameModal()" disabled>Place Order</button>
     </div>
     <div class="table-wrapper">
         <table>
@@ -24,41 +29,23 @@
           <th>Quantity</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-            <td>00001</td>
-            <td>Potatoes</td>
-            <td class="price">₹ 10.00/pkt</td>
-            <td class="last-col">
-                <p class="qty">0</p>
-                <button class="remove-btn" onclick="remove(this)" disabled>
-                    <i class="fa fa-minus-circle"></i>
-                </button>
-                <button class="add-btn" onclick="add(this)">
-                    <i class="fa fa-plus-circle"></i>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>00002</td>
-            <td>Onions</td>
-            <td class="price">₹ 7.50/kg</td>
-            <td class="last-col">
-                <p class="qty">0</p>
-                <button class="remove-btn" onclick="remove(this)" disabled>
-                    <i class="fa fa-minus-circle"></i>
-                </button>
-                <button class="add-btn" onclick="add(this)">
-                    <i class="fa fa-plus-circle"></i>
-                </button>
-            </td>
-        </tr>
+      <tbody id="products-body">
       </tbody>
     </table>
     <div class="total">
         <h3>Total: </h3>
         <p class="amt">₹ 0.00</p>
     </div>
+    </div>
+  </div>
+  <div id="nameModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <p class="modal-header"></p>
+      <input type="text" placeholder="Enter Customer Name" id="c-name"/>
+      <div class="modal-btn-div">
+        <button class="modal-btn" id="confirmDelete" onclick="placeOrder()">Place Order</button>
+        <button class="modal-btn" id="cancelDelete" onclick="hideNameModal()">Cancel</button>
+      </div>
     </div>
   </div>
   <script src="./js/add-order.js"></script>
