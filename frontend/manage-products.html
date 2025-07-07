@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/icon.png" type="image/png">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>QuickNCart</title>
+</head>
+<body>
+    <body>
+    <div class="blurred-box">
+    <div class="header-title">
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <a href="./index.html" class="back">
+                <i class="fa fa-long-arrow-left fa-lg"></i>
+            </a>
+            <h1>Products: </h1>
+        </div>
+        <button onclick="showAddModal()">Add Product</button>
+    </div>
+    <div class="table-wrapper">
+        <table>
+      <thead>
+        <tr>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody id="products-body">
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div id="addModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <p class="modal-header">Add new product</p>
+      <input placeholder="Enter product name" id="product-name" />
+      <div style="width: full; display: flex; align-items: center; justify-content: space-between; font-size: xx-large;">
+        <div style="font-size:20px; display: flex; align-items: center; gap: 20px; justify-content: start;">
+            <label for="units" style="font-size: 34px;">Unit:</label>
+            <select name="units" id="units" style="font-size: 28px; border-radius: 12px; width: fit-content; height: fit-content;">
+                <option value="piece">Piece</option>
+                <option value="pack">Pack</option>
+                <option value="kg">Kg</option>
+                <option value="gm">Gram</option>
+                <option value="litre">Litre</option>
+                <option value="ml">ml</option>
+                <option value="dozen">Dozen</option>
+                <option value="box">Box</option>
+            </select>
+        </div>
+        <div style="display: flex; justify-content: end; align-items: center; gap: 3px;">
+            Price: ₹
+            <input id="amount" placeholder="Amount" style="width: 25%; height: fit-content;"/>
+        </div>
+      </div>
+      <div class="modal-btn-div">
+        <button class="modal-btn" id="confirmAdd">Add</button>
+        <button class="modal-btn" id="cancelAdd">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div id="deleteProductModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <p class="modal-header"></p>
+      <p>This cannot be undone.Are you sure?</p>
+      <div class="modal-btn-div">
+        <button class="modal-btn" id="confirmDeletion">Yes, Delete</button>
+        <button class="modal-btn" id="cancelDeletion">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <script src="./js/manage-products.js"></script>
+</body>
+</html>
