@@ -36,4 +36,4 @@ def delete_order_details(connection, order_id):
     cursor.execute(query, (order_id,))
     connection.commit()
 
-    return cursor.lastrowid
+    return order_id

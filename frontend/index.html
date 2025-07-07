@@ -18,18 +18,22 @@
         </div>
     </div>
     <div class="table-wrapper">
-        <table>
-      <thead>
-        <tr>
-          <th>Order Number</th>
-          <th>Date</th>
-          <th>Customer Name</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody id="orders-body">
-      </tbody>
-    </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Order Number</th>
+            <th>Date</th>
+            <th>Customer Name</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody id="orders-body">
+        </tbody>
+      </table>
+    </div>
+    <div class="footer">
+      <p>Total: </p>
+      <p class="total"></p>
     </div>
   </div>
   <div id="deleteModal" class="modal" style="display:none;">
@@ -37,11 +41,12 @@
       <p class="modal-header"></p>
       <p>This cannot be undone.Are you sure?</p>
       <div class="modal-btn-div">
-        <button class="modal-btn" id="confirmDelete">Yes, Delete</button>
-        <button class="modal-btn" id="cancelDelete">Cancel</button>
+        <button class="modal-btn" id="confirm-1">Yes, Delete</button>
+        <button class="modal-btn" id="cancel-1">Cancel</button>
       </div>
     </div>
   </div>
-  <script src="./js/index.js"></script>
+  <div id="msgModal-1" class="modal" style="display:none;"></div>
+  <script type="module" src="./js/index.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@
             </a>
             <h1>Products: </h1>
         </div>
-        <button onclick="showAddModal()">Add Product</button>
+        <button id="add-product">Add Product</button>
     </div>
     <div class="table-wrapper">
         <table>
@@ -58,8 +58,8 @@
         </div>
       </div>
       <div class="modal-btn-div">
-        <button class="modal-btn" id="confirmAdd">Add</button>
-        <button class="modal-btn" id="cancelAdd">Cancel</button>
+        <button class="modal-btn" id="confirm-3">Add</button>
+        <button class="modal-btn" id="cancel-3">Cancel</button>
       </div>
     </div>
   </div>
@@ -68,11 +68,12 @@
       <p class="modal-header"></p>
       <p>This cannot be undone.Are you sure?</p>
       <div class="modal-btn-div">
-        <button class="modal-btn" id="confirmDeletion">Yes, Delete</button>
-        <button class="modal-btn" id="cancelDeletion">Cancel</button>
+        <button class="modal-btn" id="confirm-4">Yes, Delete</button>
+        <button class="modal-btn" id="cancel-4">Cancel</button>
       </div>
     </div>
   </div>
-  <script src="./js/manage-products.js"></script>
+  <div id="msgModal-3" class="modal" style="display:none;"></div>
+  <script type="module" src="./js/manage-products.js"></script>
 </body>
 </html>

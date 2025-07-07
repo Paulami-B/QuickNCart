@@ -1,4 +1,4 @@
-const apiUrl = 'http://127.0.0.1:5000/';
+import { apiUrl } from "./common.js";
 
 async function getOrderDetails(){
     const params = new URLSearchParams(window.location.search);
@@ -31,8 +31,7 @@ async function getOrderDetails(){
 
         });
 
-        const amt = document.querySelector(".amt");
-        amt.innerHTML = `₹ ${sum.toFixed(2)}`;
+        document.querySelector(".total").innerHTML = `₹ ${sum.toFixed(2)}`;
     } catch (error) {
         const box = document.querySelector(".blurred-box");
         if(!box){

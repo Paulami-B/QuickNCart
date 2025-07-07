@@ -17,7 +17,7 @@
             </a>
             <h1>Products: </h1>
         </div>
-        <button id="order-btn" onclick="showNameModal()" disabled>Place Order</button>
+        <button id="order-btn" disabled>Place Order</button>
     </div>
     <div class="table-wrapper">
         <table>
@@ -32,9 +32,9 @@
       <tbody id="products-body">
       </tbody>
     </table>
-    <div class="total">
-        <h3>Total: </h3>
-        <p class="amt">₹ 0.00</p>
+    <div class="footer">
+        <p>Total: </p>
+        <p class="total" id="order-amt">₹ 0.00</p>
     </div>
     </div>
   </div>
@@ -43,11 +43,12 @@
       <p class="modal-header"></p>
       <input type="text" placeholder="Enter Customer Name" id="c-name"/>
       <div class="modal-btn-div">
-        <button class="modal-btn" id="confirmDelete" onclick="placeOrder()">Place Order</button>
-        <button class="modal-btn" id="cancelDelete" onclick="hideNameModal()">Cancel</button>
+        <button class="modal-btn" id="confirm-2">Place Order</button>
+        <button class="modal-btn" id="cancel-2">Cancel</button>
       </div>
     </div>
   </div>
-  <script src="./js/add-order.js"></script>
+  <div id="msgModal-2" class="modal" style="display:none;"></div>
+  <script type="module" src="./js/add-order.js"></script>
 </body>
 </html>

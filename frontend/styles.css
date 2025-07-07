@@ -247,3 +247,17 @@ input {
   font-size: 48px;
   font-weight: bold;
 }
+
+.footer {
+  background-color: rgba(240, 240, 240);
+  position: sticky;
+  bottom: 0;
+  backdrop-filter: blur(8px);
+  font-size: 35px;
+  font-weight: bold;
+  display: flex;
+  justify-content: end;
+  padding-right: 100px;
+  gap: 20px;
+  color: #000;
+}
